@@ -1,0 +1,5 @@
+Для создания дампа:
+	mysqldump example -r example.sql
+
+Для развертывания дампа из powershell:
+	cmd /c 'mysql sample < example.sql'
