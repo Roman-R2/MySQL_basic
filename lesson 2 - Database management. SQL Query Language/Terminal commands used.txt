@@ -3,3 +3,6 @@
 
 Для развертывания дампа из powershell:
 	cmd /c 'mysql sample < example.sql'
+	
+Создайте дамп единственной таблицы help_keyword базы данных mysql. Причем добейтесь того, чтобы дамп содержал только первые 100 строк таблицы:
+	mysqldump --where="true limit 100" mysql help_keyword  -r help_keyword.sql
