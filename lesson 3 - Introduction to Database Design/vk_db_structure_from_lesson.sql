@@ -18,19 +18,19 @@ CREATE TABLE Users (
 last_name)
 );
 
+-- Таблица для профиля пользователя
 DROP TABLE IF EXISTS Profiles;
-
 CREATE TABLE Profiles (
 	user_id BIGINT unsigned NOT NULL UNIQUE,
 	gender CHAR(1),
 	birthday DATE, 
 	photo_id BIGINT unsigned NOT NULL,
 -- Update
-created_at DATETIME DEFAULT now(),
+	created_at DATETIME DEFAULT now(),
 	hometown VARCHAR(100)
--- FOREIGN KEY (photo_id) REFERENCES media(id)
 );
 
+-- Если что-то забыли можем изменить таблицу
 ALTER TABLE `Profiles` ADD CONSTRAINT fk_user_id
     FOREIGN KEY (user_id) REFERENCES Users(id)
     ON UPDATE CASCADE -- (значение по умолчанию)
@@ -104,9 +104,12 @@ CREATE TABLE Media(
 	id SERIAL,
     media_type_id BIGINT UNSIGNED NOT NULL,
     user_id BIGINT UNSIGNED NOT NULL,
+    -- body - текст поста, или фото, или видео...
   	body TEXT,
+  	-- filename - путь до файла на сервере
     filename VARCHAR(255),
-    -- file blob,    	
+    -- file blob,  
+    -- size - размер файла   	
     `size` INT,
 	metadata JSON,
     created_at DATETIME DEFAULT NOW(),
@@ -115,6 +118,7 @@ CREATE TABLE Media(
     FOREIGN KEY (user_id) REFERENCES Users(id),
     FOREIGN KEY (media_type_id) REFERENCES Media_types(id)
 );
+
 
 DROP TABLE IF EXISTS Likes;
 CREATE TABLE Likes(
