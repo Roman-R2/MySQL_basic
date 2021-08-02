@@ -13,10 +13,12 @@ CREATE TABLE Users (
 INSERT INTO `Users` 
 	(`name`, `date_of_birth`) 
 VALUES 
-	('Вася', '1987-02-18'), 
+	('Рома', '1987-02-18'), 
 	('Петя', '1988-06-20'), 
 	('Гоша', '1970-01-15'), 
 	('Дарт Вейдер', '2000-08-02');
+
+SELECT avg(timestampdiff(YEAR, date_of_birth, NOW())) FROM Users;
 
 select * from Users;
 
