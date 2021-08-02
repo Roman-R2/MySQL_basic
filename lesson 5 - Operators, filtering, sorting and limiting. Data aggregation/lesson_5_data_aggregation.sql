@@ -47,6 +47,7 @@ INSERT INTO users (name, birthday_at) VALUES
  -- Возвращает индекс дня недели для аргумента date (0 =понедельник, 1 = вторник, ... 6 = воскресенье)
  
 SELECT 
+	group_concat(name SEPARATOR ', '), 
 	WEEKDAY(CONCAT(year(now()), substring(birthday_at, 5, 10))) AS `weekday_of_this_year`, 
 	COUNT(WEEKDAY(birthday_at)) AS `count_of_weekdays` 
 FROM users 
