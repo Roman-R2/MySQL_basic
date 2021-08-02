@@ -18,7 +18,7 @@ VALUES
 	('Гоша', '1970-01-15'), 
 	('Дарт Вейдер', '2000-08-02');
 
-SELECT avg(timestampdiff(YEAR, date_of_birth, NOW())) FROM Users;
+SELECT concat("Средний возраст пользователей ", round(avg(timestampdiff(YEAR, date_of_birth, NOW()))), " лет") AS `average_age_of_users` FROM Users;
 
 select * from Users;
 
@@ -54,3 +54,25 @@ FROM users
 GROUP BY `weekday_of_this_year`;
 
 # 3. (по желанию) Подсчитайте произведение чисел в столбце таблицы.
+
+DROP TABLE IF EXISTS tbl;
+
+CREATE TABLE tbl (
+  id SERIAL PRIMARY KEY,
+  some_num INT NOT NULL);
+ 
+INSERT INTO `tbl`
+	(`some_num`)
+VALUES
+	(1),
+	(5),
+	(4),
+	(1),
+	(6),
+	(4),
+	(1),
+	(7);
+
+-- Формулу честно скопипастил из Сети
+
+SELECT exp(sum(ln(some_num))) AS `product_of_numbers` FROM tbl;
