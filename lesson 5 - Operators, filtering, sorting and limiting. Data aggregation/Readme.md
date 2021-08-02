@@ -1,6 +1,6 @@
 # Урок 3 - Введение в проектирование БД
 
-Исходные данные для практическог задания в файле [**initial_data_from_lesson.sql**](http://)
+Исходные данные для практическог задания в файле [**initial_data_from_lesson.sql**](https://github.com/Roman-R2/MySQL_basic/blob/main/lesson%205%20-%20Operators%2C%20filtering%2C%20sorting%20and%20limiting.%20Data%20aggregation/initial_data_from_lesson.sql)
 
 ## Задания урока:
 ### Практическое задание по теме «Операторы, фильтрация, сортировка и ограничение»
