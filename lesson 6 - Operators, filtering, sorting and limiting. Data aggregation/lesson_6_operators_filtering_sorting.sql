@@ -40,3 +40,24 @@ SELECT
 		);
 
 -- 5. Найти 10 пользователей, которые проявляют наименьшую активность в использовании социальной сети.
+	
+# Логично посмотреть по колличеству лайков, хотя непонятноза какой период, будем считать, что за весь. 
+# Так если меньше всех лайков - то малоактивен. Еще посмотрим, сколько сообщений написал пользователь, может он просто лайкать не любит.
+# Стоило бы учитывать входы в систему и проведенное активное время, но этих таблиц нет.
+
+-- Это менее активные по лайкам
+-- SELECT user_id, count(user_id) AS `uic` FROM likes GROUP BY user_id ORDER BY `uic` ASC LIMIT 10;
+	
+SELECT id, first_name, last_name FROM users WHERE id IN (
+														SELECT user_id FROM 
+														(SELECT user_id, count(user_id) AS `uic` FROM likes GROUP BY user_id ORDER BY `uic` ASC LIMIT 10) tmp_table
+														);
+
+-- Это менее активные по сообщениям
+-- SELECT from_iser_id, count(from_iser_id) AS `fuic` FROM messages GROUP BY from_iser_id ORDER BY `fuic` ASC LIMIT 10;
+													
+SELECT id, first_name, last_name FROM users WHERE id IN (
+														SELECT from_iser_id FROM 
+														(SELECT from_iser_id, count(from_iser_id) AS `fuic` FROM messages GROUP BY from_iser_id ORDER BY `fuic` ASC LIMIT 10) tmp_table
+														);													
+													
