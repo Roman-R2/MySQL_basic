@@ -3,7 +3,7 @@
 ## Задания урока:
 
 ### Практическое задание по теме “Операторы, фильтрация, сортировка и ограничение. Агрегация данных”
-Работаем с БД vk и тестовыми данными, которые сгенерировали ранее (дамп базы данных находится в файле [**db_dump_vk.sql**](https://github.com/Roman-R2/MySQL_basic/blob/main/lesson%206%20-%20Operators%2C%20filtering%2C%20sorting%20and%20limiting.%20Data%20aggregation/db_dump_vk.sql):
+Работаем с БД vk и тестовыми данными, которые сгенерировали ранее (дамп базы данных находится в файле [**db_dump_vk.sql**](https://github.com/Roman-R2/MySQL_basic/blob/main/lesson%206%20-%20Operators%2C%20filtering%2C%20sorting%20and%20limiting.%20Data%20aggregation/db_dump_vk.sql))
 
 1. Проанализировать запросы, которые выполнялись на занятии, определить возможные корректировки и/или улучшения (JOIN пока не применять).
 
