@@ -31,5 +31,38 @@ SELECT
 	p.price 
 FROM products AS p;
 
+-- 3. (по желанию) Пусть имеется таблица рейсов flights (id, from, to) и таблица городов cities (label, name). 
+-- Поля from, to и label содержат английские названия городов, поле name — русское. Выведите список рейсов flights с русскими названиями городов.
 
--- 3. (по желанию) Пусть имеется таблица рейсов flights (id, from, to) и таблица городов cities (label, name). Поля from, to и label содержат английские названия городов, поле name — русское. Выведите список рейсов flights с русскими названиями городов.
+DROP TABLE IF EXISTS flights;
+CREATE TABLE flights (
+	id BIGINT unsigned NOT NULL auto_increment PRIMARY KEY,
+	`from` VARCHAR(30),
+	`to` VARCHAR(30)
+);
+
+INSERT INTO flights VALUES
+	(NULL, 'moscow', 'omsk'),
+	(NULL, 'novgorod', 'kazan'),
+	(NULL, 'irkutsk', 'moscow'),
+	(NULL, 'omsk', 'irkutsk'),
+	(NULL, 'moscow', 'kazan');
+
+DROP TABLE IF EXISTS cities;
+CREATE TABLE cities (
+	label VARCHAR(30),
+	name VARCHAR(30)
+);
+
+INSERT INTO cities VALUES
+	('moscow', 'Москва'),
+	('irkutsk', 'Иркутск'),
+	('novgorod', 'Новгород'),
+	('kazan', 'Казань'),
+	('omsk', 'Омск');
+
+SELECT 
+	f.id AS `str num`,
+	(SELECT c.name FROM cities AS c WHERE c.label = f.`from`) AS `from`,
+	(SELECT c.name FROM cities AS c WHERE c.label = f.`to`) AS `to`
+FROM flights AS f;
