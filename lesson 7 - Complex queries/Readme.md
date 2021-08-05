@@ -10,4 +10,6 @@
 
 ## Решения:
 
+Вводные данные для решения хранятся в файле [**canvas_from_lesson.sql**](http://)
+
 Решения находятся в файле [**lesson_7_complex_queries.sql**](http://)
