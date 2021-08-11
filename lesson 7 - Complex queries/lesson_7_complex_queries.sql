@@ -20,16 +20,30 @@ INSERT INTO `orders` VALUES
 	(14,2,'2005-08-28 22:23:28','1990-11-17 06:41:24'),
 	(15,1,'1975-05-11 22:09:18','2008-01-20 02:45:38');
 	
+-- Как сделать без join:
 SELECT id, name FROM users WHERE id IN (SELECT DISTINCT user_id FROM orders);
+
+-- Как сделать с join:
+SELECT name, count(*) cnt FROM users u
+	JOIN orders o ON u.id = o.user_id
+GROUP BY u.id;
+
 
 -- 2. Выведите список товаров products и разделов catalogs, который соответствует товару.
 
+-- Как сделать без join:
 SELECT 
-	(SELECT c.name FROM catalogs AS c WHERE p.catalog_id = c.id),
+	(SELECT c.name FROM catalogs AS c WHERE p.catalog_id = c.id) catalog_name,
 	p.name, 
 	p.description, 
 	p.price 
 FROM products AS p;
+
+-- Как сделать с join:
+SELECT c.name, p.name, p.description, price
+FROM products p 
+	JOIN catalogs c ON p.catalog_id = c.id;
+
 
 -- 3. (по желанию) Пусть имеется таблица рейсов flights (id, from, to) и таблица городов cities (label, name). 
 -- Поля from, to и label содержат английские названия городов, поле name — русское. Выведите список рейсов flights с русскими названиями городов.
@@ -61,8 +75,16 @@ INSERT INTO cities VALUES
 	('kazan', 'Казань'),
 	('omsk', 'Омск');
 
+-- Как сделать без join:
 SELECT 
 	f.id AS `str num`,
 	(SELECT c.name FROM cities AS c WHERE c.label = f.`from`) AS `from`,
 	(SELECT c.name FROM cities AS c WHERE c.label = f.`to`) AS `to`
 FROM flights AS f;
+
+-- Как сделать с join:
+SELECT id, c1.name AS `from`, c2.name AS `to`
+FROM flights AS f 
+	JOIN cities AS c1 ON c1.label = f.`from`
+	JOIN cities AS c2 ON c2.label = f.`to`
+ORDER BY f.id;
