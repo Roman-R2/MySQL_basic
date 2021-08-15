@@ -34,6 +34,22 @@ SELECT hello();
 -- Используя триггеры, добейтесь того, чтобы одно из этих полей или оба поля были заполнены. 
 -- При попытке присвоить полям NULL-значение необходимо отменить операцию.
 
+DROP TRIGGER IF EXISTS check_double_null;
+
+DELIMITER $$
+CREATE TRIGGER check_double_null BEFORE INSERT ON products
+FOR EACH ROW
+BEGIN 
+   
+   	IF NEW.name IS NULL AND NEW.description IS NULL THEN 
+   		SIGNAL SQLSTATE '45000' SET message_text = 'name and description should not be NULL at the same time';
+	END IF;
+   
+END$$
+DELIMITER ;
+
+INSERT INTO products (name, description, price, catalog_id) VALUES
+	(NULL, NULL, 5000, 2);
 
 -- 3. (по желанию) Напишите хранимую функцию для вычисления произвольного числа Фибоначчи. 
 -- Числами Фибоначчи называется последовательность в которой число равно сумме двух предыдущих чисел. 
