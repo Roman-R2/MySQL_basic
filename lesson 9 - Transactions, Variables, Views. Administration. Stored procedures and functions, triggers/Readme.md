@@ -24,3 +24,9 @@
 3. (по желанию) Напишите хранимую функцию для вычисления произвольного числа Фибоначчи. Числами Фибоначчи называется последовательность в которой число равно сумме двух предыдущих чисел. Вызов функции FIBONACCI(10) должен возвращать число 55.
 
 ## Решения:
+
+1. Практическое задание по теме “Транзакции, переменные, представления”: [**lesson_9_1_transactions_variables_views.sql**](https://github.com/Roman-R2/MySQL_basic/blob/main/lesson%209%20-%20Transactions%2C%20Variables%2C%20Views.%20Administration.%20Stored%20procedures%20and%20functions%2C%20triggers/lesson_9_1_transactions_variables_views.sql)
+
+2. Практическое задание по теме “Администрирование MySQL”: [**lesson_9_2_MySQL_administration.sql**](https://github.com/Roman-R2/MySQL_basic/blob/main/lesson%209%20-%20Transactions%2C%20Variables%2C%20Views.%20Administration.%20Stored%20procedures%20and%20functions%2C%20triggers/lesson_9_2_MySQL_administration.sql)
+
+3. Практическое задание по теме “Хранимые процедуры и функции, триггеры": [**lesson_9_3_stored_procedures_and_functions_triggers.sql**](https://github.com/Roman-R2/MySQL_basic/blob/main/lesson%209%20-%20Transactions%2C%20Variables%2C%20Views.%20Administration.%20Stored%20procedures%20and%20functions%2C%20triggers/lesson_9_3_stored_procedures_and_functions_triggers.sql)
