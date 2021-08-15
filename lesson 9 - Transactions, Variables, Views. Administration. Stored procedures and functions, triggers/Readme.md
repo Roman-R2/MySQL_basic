@@ -25,6 +25,8 @@
 
 ## Решения:
 
+0. Исходная структура БД: [canvas_for_lesson_9.sql](https://github.com/Roman-R2/MySQL_basic/blob/main/lesson%209%20-%20Transactions%2C%20Variables%2C%20Views.%20Administration.%20Stored%20procedures%20and%20functions%2C%20triggers/canvas_for_lesson_9.sql)
+
 1. Практическое задание по теме “Транзакции, переменные, представления”: [**lesson_9_1_transactions_variables_views.sql**](https://github.com/Roman-R2/MySQL_basic/blob/main/lesson%209%20-%20Transactions%2C%20Variables%2C%20Views.%20Administration.%20Stored%20procedures%20and%20functions%2C%20triggers/lesson_9_1_transactions_variables_views.sql)
 
 2. Практическое задание по теме “Администрирование MySQL”: [**lesson_9_2_MySQL_administration.sql**](https://github.com/Roman-R2/MySQL_basic/blob/main/lesson%209%20-%20Transactions%2C%20Variables%2C%20Views.%20Administration.%20Stored%20procedures%20and%20functions%2C%20triggers/lesson_9_2_MySQL_administration.sql)
