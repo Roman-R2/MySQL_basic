@@ -5,6 +5,28 @@
 -- с 12:00 до 18:00 функция должна возвращать фразу "Добрый день", 
 -- с 18:00 до 00:00 — "Добрый вечер", с 00:00 до 6:00 — "Доброй ночи".
 
+DROP FUNCTION IF EXISTS hello;
+
+DELIMITER $$
+CREATE FUNCTION hello ()
+RETURNS text DETERMINISTIC 
+BEGIN
+	
+	DECLARE tmp_time DATE;
+
+	SET tmp_time = TIME(NOW());
+	
+	IF tmp_time >= CAST('06:00:00' AS time) AND tmp_time < CAST('11:59:59' AS time) THEN RETURN 'Доброе утро';
+    ELSEIF tmp_time >= CAST('12:00:00' AS time) AND tmp_time < CAST('17:59:59' AS time) THEN RETURN 'Добрый день';
+    ELSEIF tmp_time >= CAST('18:00:00' AS time) AND tmp_time < CAST('23:59:59' AS time) THEN RETURN 'Добрый вечер';
+    ELSEIF tmp_time >= CAST('00:00:00' AS time) AND tmp_time < CAST('05:59:59' AS time) THEN RETURN 'Добрый вечер';
+    ELSE RETURN 'ERROR: Не определено';
+    END IF;
+  
+END$$
+DELIMITER ;
+
+SELECT hello();
 
 -- 2. В таблице products есть два текстовых поля: name с названием товара и description с его описанием. 
 -- Допустимо присутствие обоих полей или одно из них. 
