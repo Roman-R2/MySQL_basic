@@ -54,3 +54,25 @@ INSERT INTO products (name, description, price, catalog_id) VALUES
 -- 3. (по желанию) Напишите хранимую функцию для вычисления произвольного числа Фибоначчи. 
 -- Числами Фибоначчи называется последовательность в которой число равно сумме двух предыдущих чисел. 
 -- Вызов функции FIBONACCI(10) должен возвращать число 55.
+
+-- 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711,
+
+DROP FUNCTION IF EXISTS fibonacci;
+delimiter $$
+CREATE FUNCTION fibonacci (value INT)
+RETURNS text DETERMINISTIC
+BEGIN
+	DECLARE old_i INT DEFAULT 1;
+	DECLARE new_i INT DEFAULT 1;
+	DECLARE rez int DEFAULT 0;
+	WHILE value > 2 DO
+		SET rez = old_i + new_i;
+		SET old_i = new_i;
+		SET new_i = rez;
+		SET value = value - 1;
+	END WHILE;
+	RETURN new_i;
+END
+delimiter ;
+
+SELECT fibonacci(10);
