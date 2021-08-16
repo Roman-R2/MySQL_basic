@@ -60,7 +60,7 @@ INSERT INTO products (name, description, price, catalog_id) VALUES
 DROP FUNCTION IF EXISTS fibonacci;
 delimiter $$
 CREATE FUNCTION fibonacci (value INT)
-RETURNS text DETERMINISTIC
+RETURNS INT DETERMINISTIC
 BEGIN
 	DECLARE old_i INT DEFAULT 1;
 	DECLARE new_i INT DEFAULT 1;
