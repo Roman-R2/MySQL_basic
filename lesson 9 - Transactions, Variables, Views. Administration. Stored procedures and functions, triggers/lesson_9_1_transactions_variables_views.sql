@@ -41,12 +41,34 @@ INSERT INTO from_table VALUES
 
 SELECT * FROM from_table;
 	
--- создадим временную таблицу
+-- решим с помошью функции
 
-DROP TEMPORARY TABLE IF EXISTS tmp;
-CREATE TEMPORARY TABLE tmp (
-		dates DATE NOT NULL
+DROP FUNCTION IF EXISTS fill_tmp;
+delimiter $$
+CREATE FUNCTION fill_tmp (start_date DATE)
+RETURNS text DETERMINISTIC
+BEGIN
+	DECLARE day_in_month INT DEFAULT DAY(LAST_DAY(start_date));
+	DECLARE d_count int DEFAULT 0;
+	
+	-- создадим временную таблицу
+	DROP TEMPORARY TABLE IF EXISTS tmp;
+	CREATE TEMPORARY TABLE tmp (
+		dates DATE NOT NULL,
+		`count` INT DEFAULT 0
 	);
+
+	WHILE day_in_month > 0 DO
+		INSERT INTO tmp (dates, `count`) VALUES (start_date, IF((SELECT count(*) FROM from_table WHERE created_at IN (start_date)), 1, 0));
+		SET start_date = start_date + INTERVAL 1 DAY;
+		SET day_in_month = day_in_month - 1;
+	END WHILE;
+
+	RETURN 'tmp';
+END
+delimiter ;
+
+SELECT fill_tmp('2018-08-01');
 
 SELECT * FROM tmp;
 -- не окончено
