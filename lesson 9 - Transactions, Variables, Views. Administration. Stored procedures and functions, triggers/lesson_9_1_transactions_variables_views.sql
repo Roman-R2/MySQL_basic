@@ -76,3 +76,24 @@ SELECT * FROM tmp;
 -- 4. (по желанию) Пусть имеется любая таблица с календарным полем created_at. 
 -- Создайте запрос, который удаляет устаревшие записи из таблицы, оставляя только 5 самых свежих записей.
 
+DROP TABLE IF EXISTS some_table;
+CREATE TABLE some_table (
+	id SERIAL,
+    created_at DATETIME NOT NULL
+);
+
+INSERT INTO some_table (created_at) VALUES
+	(NOW() + INTERVAL 3 DAY),
+	(NOW() + INTERVAL 2 DAY),
+	(NOW() + INTERVAL 1 HOUR),
+	(NOW() + INTERVAL 5 DAY),
+	(NOW() + INTERVAL 2 HOUR),
+	(NOW() + INTERVAL 3 HOUR),
+	(NOW() + INTERVAL 4 HOUR),
+	(NOW() + INTERVAL 1 DAY),
+	(NOW() + INTERVAL 1 MINUTE),
+	(NOW() + INTERVAL 2 MINUTE),
+	(NOW() + INTERVAL 10 MINUTE),
+	(NOW());
+
+DELETE FROM some_table WHERE created_at NOT IN (SELECT created_at FROM (SELECT created_at FROM some_table ORDER BY created_at DESC LIMIT 5) tmp_t);
