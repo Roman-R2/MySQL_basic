@@ -16,8 +16,8 @@
 
 ## Решения:
 
-0. Исходная структура БД в файле [**canvas_for_lesson_11.sql**](http://)
+0. Исходная структура БД в файле [**canvas_for_lesson_11.sql**](https://github.com/Roman-R2/MySQL_basic/blob/main/lesson%2011%20-%20Query%20Optimization.%20NoSQL/canvas_for_lesson_11.sql)
 
-1. Решения раздела практического задание по теме “Оптимизация запросов” находятся в файле [**lesson_11_optimizing_queries.sql**](http://)
+1. Решения раздела практического задание по теме “Оптимизация запросов” находятся в файле [**lesson_11_optimizing_queries.sql**](https://github.com/Roman-R2/MySQL_basic/blob/main/lesson%2011%20-%20Query%20Optimization.%20NoSQL/lesson_11_optimizing_queries.sql)
 
-2. Решения раздела практического задание по теме “NoSQL” находятся в файле [**lesson_11_NoSQL.sql**](http://)
+2. Решения раздела практического задание по теме “NoSQL” находятся в файле [**lesson_11_NoSQL.sql**](https://github.com/Roman-R2/MySQL_basic/blob/main/lesson%2011%20-%20Query%20Optimization.%20NoSQL/lesson_11_NoSQL.sql)
