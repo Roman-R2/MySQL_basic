@@ -86,3 +86,24 @@ SELECT * FROM logs;
 
 -- 2. (по желанию) Создайте SQL-запрос, который помещает в таблицу users миллион записей.
 
+DROP TABLE IF EXISTS million_rows;
+CREATE TABLE million_rows (
+	`count` varchar(7) NOT NULL DEFAULT 'error'
+);
+
+DROP PROCEDURE IF EXISTS million_dollars;
+DELIMITER $$
+CREATE PROCEDURE million_dollars(number_of_iterations INT)
+BEGIN
+    SET @x = 1;
+    REPEAT 
+        INSERT INTO million_rows (`count`) VALUES (@x);
+        SET @x = @x + 1; 
+    UNTIL @x > number_of_iterations END REPEAT;
+END$$
+DELIMITER ;
+
+-- выполняется долго
+CALL million_dollars(100);
+
+EXPLAIN SELECT `count` FROM million_rows;
