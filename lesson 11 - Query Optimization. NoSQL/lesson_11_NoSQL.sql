@@ -49,3 +49,59 @@ OK
 (nil)
 
 -- 3. Организуйте хранение категорий и товарных позиций учебной базы данных shop в СУБД MongoDB.
+
+-- Для решения использован MongoDB Community Edition on Windows (https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
+-- и mongosh (https://docs.mongodb.com/mongodb-shell/install/#std-label-mdb-shell-install)
+
+test> show dbs
+admin    41 kB
+config  111 kB
+local    41 kB
+
+test> use shop
+switched to db shop
+
+-- Вставляем документы таблицы catalogs
+shop> db.shop.insertOne({"table": "catalogs", "name":"Процессоры", "id": 1})
+{
+  acknowledged: true,
+  insertedId: ObjectId("612103cff6c3a2968ffcb4e6")
+}
+shop> db.shop.insertMany([{"table": "catalogs", "name":"Материнские платы", "id": 2}, {"table": "catalogs", "name":"Видеокарты", "id": 3}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("61210474f6c3a2968ffcb4e7"),
+    '1': ObjectId("61210474f6c3a2968ffcb4e8")
+  }
+}
+shop> db.shop.insertMany([{"table": "catalogs", "name":"Жесткие диски", "id": 4}, {"table": "catalogs", "name":"Оперативная память", "id": 5}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("612104a0f6c3a2968ffcb4e9"),
+    '1': ObjectId("612104a0f6c3a2968ffcb4ea")
+  }
+}
+
+shop> db.shop.insertMany([
+{"table": "products", "name": "Intel Core i3-8100", "description": "Процессор для настольных персональных компьютеров, основанных на платформе Intel.", "price": "7890", "catalog_id": "1"}, 
+{"table": "products", "name": "Intel Core i5-7400", "description": "Процессор для настольных персональных компьютеров, основанных на платформе Intel.", "price": "12700", "catalog_id": "1"}, 
+{"table": "products", "name": "AMD FX-8320E", "description": "Процессор для настольных персональных компьютеров, основанных на платформе AMD.", "price": "4780", "catalog_id": "1"}, 
+{"table": "products", "name": "AMD FX-8320", "description": "Процессор для настольных персональных компьютеров, основанных на платформе AMD.", "price": "7120", "catalog_id": "1"}, 
+{"table": "products", "name": "ASUS ROG MAXIMUS X HERO", "description": "Материнская плата ASUS ROG MAXIMUS X HERO, Z370, Socket 1151-V2, DDR4, ATX", "price": "19310", "catalog_id": "2"}, 
+{"table": "products", "name": "Gigabyte H310M S2H", "description": "Материнская плата ASUS ROG MAXIMUS X HERO, Z370, Socket 1151-V2, DDR4, ATX", "price": "4790", "catalog_id": "2"}, 
+{"table": "products", "name": "MSI B250M GAMING PRO", "description": "Материнская плата MSI B250M GAMING PRO, B250, Socket 1151, DDR4, mATX", "price": "", "catalog_id": "2"}
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("61210898f6c3a2968ffcb4eb"),
+    '1': ObjectId("61210898f6c3a2968ffcb4ec"),
+    '2': ObjectId("61210898f6c3a2968ffcb4ed"),
+    '3': ObjectId("61210898f6c3a2968ffcb4ee"),
+    '4': ObjectId("61210898f6c3a2968ffcb4ef"),
+    '5': ObjectId("61210898f6c3a2968ffcb4f0"),
+    '6': ObjectId("61210898f6c3a2968ffcb4f1")
+  }
+}
