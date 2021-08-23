@@ -34,4 +34,4 @@
 
 ## Скрипт проекта
 
-Скрипт спроектированной системы находится в файле [hotel_booking.sql](https://github.com/Roman-R2/MySQL_basic/blob/main/final%20-%20Course%20work/hotel_booking.sql)
+Скрипт спроектированной системы находится в файле [hotel_booking_canvas.sql](https://)
