@@ -34,12 +34,12 @@
 
 ## Скрипт проекта
 
-1. Скрипт создания структуры БД находится в файле [01_hotel_booking_canvas.sql](https://)
+1. Скрипт создания структуры БД находится в файле [01_hotel_booking_canvas.sql](https://github.com/Roman-R2/MySQL_basic/blob/main/lesson%201z%20-%20Course%20work/01_hotel_booking_canvas.sql)
 
-2. Скрипт наполнения БД данными находится в файле [02_hotel_booking_data.sql.sql](https://)
+2. Скрипт наполнения БД данными находится в файле [02_hotel_booking_data.sql.sql](https://github.com/Roman-R2/MySQL_basic/blob/main/lesson%201z%20-%20Course%20work/02_hotel_booking_data.sql)
 
-3. Скрипт характерных выборок находится в файле [03_hotel_booking_requests.sql](https://)
+3. Скрипт характерных выборок находится в файле [03_hotel_booking_requests.sql](https://github.com/Roman-R2/MySQL_basic/blob/main/lesson%201z%20-%20Course%20work/03_hotel_booking_requests.sql)
 
-4. Скрипт представлений находится в файле [04_hotel_booking_views.sql](https://)
+4. Скрипт представлений находится в файле [04_hotel_booking_views.sql](https://github.com/Roman-R2/MySQL_basic/blob/main/lesson%201z%20-%20Course%20work/04_hotel_booking_views.sql)
 
-5. Скрипт Хранимых процедур / триггеров находится в файле [05_hotel_booking_stored_procedures_functions_triggers.sql](https://)
+5. Скрипт Хранимых процедур / триггеров находится в файле [05_hotel_booking_stored_procedures_functions_triggers.sql](https://github.com/Roman-R2/MySQL_basic/blob/main/lesson%201z%20-%20Course%20work/05_hotel_booking_stored_procedures_functions_triggers.sql)
