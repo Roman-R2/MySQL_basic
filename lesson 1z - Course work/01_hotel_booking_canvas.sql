@@ -23,7 +23,6 @@ CREATE TABLE hotels (
 	`type` ENUM('Отель', 'Аппартаменты', 'Вилла', 'Гостевой дом') NOT NULL COMMENT 'Тип объекта размещения',
 	rating DECIMAL(3,1) NOT NULL COMMENT 'Рейтинг от 0.0 до 10.0',
 	description VARCHAR(1000) NOT NULL COMMENT 'Текстовое описание объекта размещения',
-	-- Надо бы отдельные таблицы сделать адресу для лучшего поиска по городам и местам, но я здесь сосредоточился на бронировании
 	adress VARCHAR(500) NOT NULL COMMENT 'Адрес объекта размещения' ,
 	hotel_rooms_id BIGINT UNSIGNED NOT NULL COMMENT 'Ключ к таблице hotel_rooms для соотношения номеров с местом размещения'
 	
@@ -110,5 +109,39 @@ CREATE TABLE reviews (
 	description VARCHAR(1000) DEFAULT 'Текст отзыва не указан' COMMENT 'Текст отзыва по желанию',
 	
 	FOREIGN KEY (booking_id) REFERENCES bookings(id)
-	
 );
+
+-- Таблица для хранения наименований стран
+DROP TABLE IF EXISTS regions;
+CREATE TABLE regions (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(200) NOT NULL COMMENT 'Название страны'
+);
+
+-- Таблица для хранения наименований городов
+DROP TABLE IF EXISTS cities;
+CREATE TABLE cities (
+	id SERIAL PRIMARY KEY,
+	region_id BIGINT UNSIGNED NOT NULL COMMENT 'Ссылка на страну',
+	name VARCHAR(200) NOT NULL COMMENT 'Название города',
+	
+	FOREIGN KEY (region_id) REFERENCES regions(id)
+);
+
+-- Таблица для хранения адресов мест размещения
+DROP TABLE IF EXISTS addresses;
+CREATE TABLE addresses (
+	id SERIAL PRIMARY KEY,
+	hotel_id BIGINT UNSIGNED NOT NULL COMMENT 'Ссылка на отель',
+	
+	city_id BIGINT UNSIGNED NOT NULL COMMENT 'Ссылка на город',
+	street VARCHAR(100) NOT NULL COMMENT 'Название улицы',
+	house_number VARCHAR(15) NOT NULL COMMENT 'Номер дома',
+	latitude DECIMAL(10,8) NOT NULL COMMENT 'Координата широты', 
+	longitude DECIMAL(10,8) NOT NULL COMMENT 'Координата долготы',
+	
+	FOREIGN KEY (hotel_id) REFERENCES hotels(id),
+	FOREIGN KEY (city_id) REFERENCES cities(id)
+);
+
+
