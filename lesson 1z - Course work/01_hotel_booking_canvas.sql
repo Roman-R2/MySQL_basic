@@ -22,11 +22,7 @@ CREATE TABLE hotels (
 	id SERIAL PRIMARY KEY,
 	`type` ENUM('Отель', 'Аппартаменты', 'Вилла', 'Гостевой дом') NOT NULL COMMENT 'Тип объекта размещения',
 	rating DECIMAL(3,1) NOT NULL COMMENT 'Рейтинг от 0.0 до 10.0',
-	description VARCHAR(1000) NOT NULL COMMENT 'Текстовое описание объекта размещения',
-	adress VARCHAR(500) NOT NULL COMMENT 'Адрес объекта размещения' ,
-	hotel_rooms_id BIGINT UNSIGNED NOT NULL COMMENT 'Ключ к таблице hotel_rooms для соотношения номеров с местом размещения'
-	
- 	-- FOREIGN KEY (hotel_rooms_id) REFERENCES hotel_rooms(id)
+	description VARCHAR(1000) NOT NULL COMMENT 'Текстовое описание объекта размещения'
 );
 
 -- Таблица для названия комнат, типа одноместный номер, семейныи номер и пр.
@@ -54,7 +50,7 @@ CREATE TABLE hotel_rooms (
 DROP TABLE IF EXISTS room_fasilities;
 CREATE TABLE room_fasilities (
 	id SERIAL PRIMARY KEY,
-	name VARCHAR(100) NOT NULL COMMENT 'Название удобств в комнате'
+	name VARCHAR(100) UNIQUE NOT NULL COMMENT 'Название удобств в комнате'
 );
 
 -- Таблица для соединения удобств в номере с конкретным номером
@@ -132,7 +128,7 @@ CREATE TABLE cities (
 DROP TABLE IF EXISTS addresses;
 CREATE TABLE addresses (
 	id SERIAL PRIMARY KEY,
-	hotel_id BIGINT UNSIGNED NOT NULL COMMENT 'Ссылка на отель',
+	hotel_id BIGINT UNSIGNED NOT NULL UNIQUE COMMENT 'Ссылка на отель',
 	
 	city_id BIGINT UNSIGNED NOT NULL COMMENT 'Ссылка на город',
 	street VARCHAR(100) NOT NULL COMMENT 'Название улицы',
