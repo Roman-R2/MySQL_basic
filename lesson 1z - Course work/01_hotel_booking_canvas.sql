@@ -22,6 +22,7 @@ CREATE TABLE hotels (
 	id SERIAL PRIMARY KEY,
 	`type` ENUM('Отель', 'Аппартаменты', 'Вилла', 'Гостевой дом') NOT NULL COMMENT 'Тип объекта размещения',
 	rating DECIMAL(3,1) NOT NULL COMMENT 'Рейтинг от 0.0 до 10.0',
+	name VARCHAR(100) NOT NULL COMMENT 'Название места размещения',
 	description VARCHAR(1000) NOT NULL COMMENT 'Текстовое описание объекта размещения'
 );
 
