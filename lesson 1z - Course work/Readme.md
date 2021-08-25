@@ -44,6 +44,7 @@ ER-диаграмма представлена [в данном файле: ](ht
 |is_hotel_manager|tinyint(1)|NO||0||
 
 2. **messages** - таблица для обмена сообщениями между пользователями и администраторами/контент-менеджерами мест размещения. Используется для прямой связи с местом размещения.
+
 |Field|Type|Null|Key|Default|Extra|
 |-----|----|----|---|-------|-----|
 |id|bigint unsigned|NO|PRI||auto_increment|
@@ -53,6 +54,7 @@ ER-диаграмма представлена [в данном файле: ](ht
 |created_at|datetime|YES||CURRENT_TIMESTAMP|DEFAULT_GENERATED|
 
 3. **bookings** - таблица предназначена для хранения информации о бронированиях с указанием даты заезда и ссылкой на конкретную комнату в объекте размещения.
+
 |Field|Type|Null|Key|Default|Extra|
 |-----|----|----|---|-------|-----|
 |id|bigint unsigned|NO|PRI||auto_increment|
@@ -65,6 +67,7 @@ ER-диаграмма представлена [в данном файле: ](ht
 |updated_at|datetime|YES|||on update CURRENT_TIMESTAMP|
 
 4. **reviews** - Таблица для хранения отзывов о прошедшем проживании.
+
 |Field|Type|Null|Key|Default|Extra|
 |-----|----|----|---|-------|-----|
 |id|bigint unsigned|NO|PRI||auto_increment|
@@ -73,6 +76,7 @@ ER-диаграмма представлена [в данном файле: ](ht
 |description|varchar(1000)|YES||Текст отзыва не указан||
 
 5. **hotel_rooms** - таблица для хранения типов комнат в конкретном месте размещения, со ссылками на удобства в номерах и конкретный отель. В одном отеле может быть множество номеров/комнат. Также тут хранится цена за сутки проживания в конкретном номере.
+
 |Field|Type|Null|Key|Default|Extra|
 |-----|----|----|---|-------|-----|
 |id|bigint unsigned|NO|PRI||auto_increment|
@@ -82,6 +86,7 @@ ER-диаграмма представлена [в данном файле: ](ht
 
 
 6. **rooms** - таблица для хранения типового наименования комнаты, типа "семейный номер на четверых", "улучшенный номер с одной кроватью размера king-size" и т.д.
+
 |Field|Type|Null|Key|Default|Extra|
 |-----|----|----|---|-------|-----|
 |id|bigint unsigned|NO|PRI||auto_increment|
@@ -89,6 +94,7 @@ ER-диаграмма представлена [в данном файле: ](ht
 
 
 7. **hotel_rooms_to_room_fasilities** - таблица для организации связи многое ко многим между комнатой и ее удобствами.
+
 |Field|Type|Null|Key|Default|Extra|
 |-----|----|----|---|-------|-----|
 |hotel_room_id|bigint unsigned|NO|PRI|||
@@ -96,6 +102,7 @@ ER-диаграмма представлена [в данном файле: ](ht
 
 
 8. **room_fasilities** - таблица для хранения названий типовых удобств в номерах.
+
 |Field|Type|Null|Key|Default|Extra|
 |-----|----|----|---|-------|-----|
 |id|bigint unsigned|NO|PRI||auto_increment|
@@ -103,6 +110,7 @@ ER-диаграмма представлена [в данном файле: ](ht
 
 
 9. **hotels** - таблица для хранения общей информации о местах размещений, таких как их название, тип, описание, рейтинг.
+
 |Field|Type|Null|Key|Default|Extra|
 |-----|----|----|---|-------|-----|
 |id|bigint unsigned|NO|PRI||auto_increment|
@@ -113,6 +121,7 @@ ER-диаграмма представлена [в данном файле: ](ht
 
 
 10. **addresses** - таблица для хранения адресов мест размещения и других географических данных
+
 |Field|Type|Null|Key|Default|Extra|
 |-----|----|----|---|-------|-----|
 |id|bigint unsigned|NO|PRI||auto_increment|
@@ -125,6 +134,7 @@ ER-диаграмма представлена [в данном файле: ](ht
 
 
 11. **cities** - таблица для хранения имен городов
+
 |Field|Type|Null|Key|Default|Extra|
 |-----|----|----|---|-------|-----|
 |id|bigint unsigned|NO|PRI||auto_increment|
@@ -133,6 +143,7 @@ ER-диаграмма представлена [в данном файле: ](ht
 
 
 12. **regions** - таблица для хранения имен стран
+
 |Field|Type|Null|Key|Default|Extra|
 |-----|----|----|---|-------|-----|
 |id|bigint unsigned|NO|PRI||auto_increment|
